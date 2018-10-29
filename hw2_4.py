@@ -1,6 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
+Created on Mon Oct 29 14:05:04 2018
+
+@author: s1856289
+"""
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
 Created on Mon Oct 29 13:48:51 2018
 
 @author: s1856289
@@ -10,7 +18,7 @@ Created on Mon Oct 29 13:48:51 2018
 import re
 import cfg_fix
 from cfg_fix import parse_grammar, Tree
-from cky_3 import CKY
+from cky_4 import CKY
 
 def tokenise(tokenstring):
   '''Split a string into a list of tokens
