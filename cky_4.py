@@ -125,7 +125,10 @@ class CKY:
         self.unaryFill()
         self.binaryScan()
         # Replace the line below for Q6
-        return self.grammar.start() in self.matrix[0][self.n-1].labels(), len(self.matrix[0][self.n-1].labels())
+        if self.grammar.start() in self.matrix[0][self.n-1].labels():
+            return len(self.matrix[0][self.n-1].labels())
+        else:
+            return False
 
     def unaryFill(self):
         '''
@@ -199,7 +202,7 @@ class Cell:
         self._labels=[]
 
     def addLabel(self,label):
-        if label not in self._labels:
+        if label not in self.labels():
             self._labels.append(label)
             self.unaryUpdate(label)
 
@@ -222,7 +225,6 @@ class Cell:
             for parent in self.matrix.unary[symbol]:
                 self.matrix.log("%s -> %s",parent,symbol,indent=depth+1)
                 self.addLabel(parent)
-                self.unaryUpdate(parent,depth+1,True)
 
 # helper methods from cky_print
 Cell.__str__=Cell__str__

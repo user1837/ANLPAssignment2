@@ -88,7 +88,7 @@ class CKY:
         :type verbose: bool
         :param verbose: show debugging output if True, defaults to False
         :rtype: bool
-        :return: true if the start symbol is in the index [0][n-1] in the chart (means the sentence was recognised); false otherwise
+        :return: number of parses if the start symbol is in the index [0][n-1] in the chart (means the sentence was recognised); false otherwise
 
         '''
         self.verbose=verbose
@@ -117,7 +117,10 @@ class CKY:
         self.unaryFill()
         self.binaryScan()
         # Replace the line below for Q6
-        return self.grammar.start() in self.matrix[0][self.n-1].labels(), len(self.matrix[0][self.n-1].labels())
+        if self.grammar.start() in self.matrix[0][self.n-1].labels():
+            return len(self.matrix[0][self.n-1].labels())
+        else:
+            return False
 
     def unaryFill(self):
         '''
